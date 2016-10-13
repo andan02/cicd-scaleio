@@ -1,0 +1,50 @@
+[mdm]
+node0 ansible_ssh_host=rtp10-b30-atg-007.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node1 ansible_ssh_host=rtp10-b30-atg-008.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node2 ansible_ssh_host=rtp10-b30-atg-009.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+
+[tb]
+node3 ansible_ssh_host=rtp10-b30-atg-010.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node4 ansible_ssh_host=rtp10-b30-atg-011.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+
+[sds]
+node0 ansible_ssh_host=rtp10-b30-atg-007.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node1 ansible_ssh_host=rtp10-b30-atg-008.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node2 ansible_ssh_host=rtp10-b30-atg-009.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node3 ansible_ssh_host=rtp10-b30-atg-010.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node4 ansible_ssh_host=rtp10-b30-atg-011.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+
+[lia]
+node0 ansible_ssh_host=rtp10-b30-atg-007.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node1 ansible_ssh_host=rtp10-b30-atg-008.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node2 ansible_ssh_host=rtp10-b30-atg-009.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node3 ansible_ssh_host=rtp10-b30-atg-010.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node4 ansible_ssh_host=rtp10-b30-atg-011.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+
+[gateway]
+node0 ansible_ssh_host=rtp10-b30-atg-007.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node1 ansible_ssh_host=rtp10-b30-atg-008.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node2 ansible_ssh_host=rtp10-b30-atg-009.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node3 ansible_ssh_host=rtp10-b30-atg-010.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node4 ansible_ssh_host=rtp10-b30-atg-011.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+
+[gui]
+node0 ansible_ssh_host=rtp10-b30-atg-007.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node1 ansible_ssh_host=rtp10-b30-atg-008.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node2 ansible_ssh_host=rtp10-b30-atg-009.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node3 ansible_ssh_host=rtp10-b30-atg-010.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node4 ansible_ssh_host=rtp10-b30-atg-011.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+
+[callhome]
+node0 ansible_ssh_host=rtp10-b30-atg-007.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+
+[sdc]
+node0 ansible_ssh_host=rtp10-b30-atg-007.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node1 ansible_ssh_host=rtp10-b30-atg-008.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node2 ansible_ssh_host=rtp10-b30-atg-009.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node3 ansible_ssh_host=rtp10-b30-atg-010.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node4 ansible_ssh_host=rtp10-b30-atg-011.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node5 ansible_ssh_host=rtp10-b30-atg-003.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node6 ansible_ssh_host=rtp10-b30-atg-004.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node7 ansible_ssh_host=rtp10-b30-atg-005.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh
+node8 ansible_ssh_host=rtp10-b30-atg-002.atg.ciscolabs.com ansible_user=root ansible_ssh_pass=ATG!heh

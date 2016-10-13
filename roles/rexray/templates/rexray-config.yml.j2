@@ -1,0 +1,11 @@
+rexray:
+  storageDrivers:
+  - scaleio
+scaleio:
+  endpoint: https://{{ scaleio.mdm1_ip }}/api
+  insecure: true
+  userName: admin
+  password: {{ scaleio.gateway_admin_password }}
+  systemName: {{ scaleio.system_name }}
+  protectionDomainName: {{ scaleio.protection_domain }}
+  storagePoolName: {{ scaleio.storage_pool }}

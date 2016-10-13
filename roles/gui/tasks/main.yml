@@ -1,0 +1,25 @@
+---
+- set_fact: role_name_scaleio=gui
+
+- name: Install x11-auth package - GUI is X11
+  package: name="xorg-x11-xauth" state="present"
+
+- name: Install pre-requisite java
+  package: name="java-1.8.0-openjdk-devel" state="present"
+
+- include: ../../install_scaleio.yml
+
+- name: Create a file called MDM_SERVICE_MODE
+  command: /bin/bash -c 'echo "Reset Admin" > /opt/emc/scaleio/mdm/logs/MDM_SERVICE_MODE'
+
+- name: login with new password
+  command: scli --login --username admin --password "{{ scaleio.password }}"
+
+- name: Reset gateway admin password
+  command: /bin/bash -c 'scli --reset_admin --i_am_sure'
+
+- name: Set gateway admin password
+  command: /bin/bash -c 'scli --set_password --old_password admin --new_password "{{ scaleio.gateway_admin_password }}"'
+
+- name: Remove the file called MDM_SERVICE_MODE
+  command: rm -rf /opt/emc/scaleio/mdm/logs/MDM_SERVICE_MODE

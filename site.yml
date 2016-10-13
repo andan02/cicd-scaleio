@@ -1,0 +1,76 @@
+# vim:ft=ansible:
+---
+- hosts: all
+  name: "set up facts"
+  tags: common
+  tasks:
+    - include_vars: /Users/andrewa/PyCharmProjects/atg/common/env/env-controller.yaml
+#    - debug: var=hostvars[inventory_hostname]['ansible_{{scaleio.interface}}']['ipv4']['address']
+#    - set_fact: scaleio_mdm_primary_ip="{{ scaleio.mdm1_ip }}"
+#    - set_fact: scaleio_mdm_primary_hostname="{{ scaleio.mdm1_name }}"
+#    - set_fact: scaleio_mdm_secondary_ip="{{ scaleio.mdm2_ip }}"
+#    - set_fact: scaleio_mdm_secondary_hostname="{{ scaleio.mdm2_name }}"
+#    - set_fact: scaleio_mdm_tertiary_ip="{{ env.volume_service_tb_ip }}"
+#    - set_fact: scaleio_mdm_tertiary_hostname="{{ env.volume_service_tb_name }}"
+#      when: hostvars[groups['mdm'][2]] is defined
+
+#    - set_fact: scaleio_mdm_tertiary_hostname="{{ hostvars[groups['mdm'][2]]['inventory_hostname'] }}"
+#      when: hostvars[groups['mdm'][2]] is defined
+
+- hosts: all
+  name: "Install Common"
+  roles:
+    - common
+  tags: common
+
+- hosts: mdm
+  name: "Configure mdm"
+  roles:
+    - mdm
+  tags: mdm
+
+- hosts: tb
+  name: "Configure tb"
+  tags: tb
+
+- hosts: gateway
+  name: "Configure Gateway"
+  roles:
+    - gateway
+  tags: gateway
+
+- hosts: gui
+  name: "Configure gui"
+  roles:
+    - gui
+  tags: gui
+
+- hosts: sds
+  name: "Configure sds"
+  roles:
+    - sds
+  tags: sds
+
+#- hosts: callhome
+#  name: "Configure callhome"
+#  roles:
+#    - callhome
+#  tags: callhome
+
+- hosts: lia
+  name: "Configure lia"
+  roles:
+    - lia
+  tags: lia
+
+- hosts: sdc
+  name: "Configure sdc"
+  roles:
+    - sdc
+  tags: sdc
+
+- hosts: sdc
+  name: "Configure rexray"
+  roles:
+    - rexray
+  tags: rexray

@@ -1,0 +1,20 @@
+---
+- name: Copy rexray rpm file to server
+  copy: src=rexray-0.4.0+11-1.x86_64.rpm dest=/var/tmp/rexray-0.4.0+11-1.x86_64.rpm
+  when: env.volume_service == 'true'
+
+- name: Install latest rexray service
+  yum: name=/var/tmp/rexray-0.4.0+11-1.x86_64.rpm state=present
+  when: env.volume_service == 'true'
+
+- name: Create rexray config path
+  command: mkdir -p /etc/rexray
+  when: env.volume_service == 'true'
+
+- name: Copy rexray config into path
+  template: src=templates/rexray-config.yml.j2 dest=/etc/rexray/config.yml
+  when: env.volume_service == 'true'
+
+- name: Start rexray service
+  service: name=rexray state=started enabled=yes
+  when: env.volume_service == 'true'

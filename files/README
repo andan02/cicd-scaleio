@@ -1,0 +1,4 @@
+PUT EMC SCALEIO RPMs HERE
+
+FROM:
+    https://ccs-artifactory.cisco.com/artifactory/simple/atg-services/emc/scaleio/*.rpm

@@ -1,0 +1,11 @@
+# vim:ft=ansible:
+---
+
+- set_fact: scaleio_mdm_ips="{{ scaleio.mdm2_ip }},{{scaleio.mdm1_ip}}"
+  when: scaleio.mdm3_ip is not defined
+
+- set_fact: scaleio_mdm_ips="{{ scaleio.mdm2_ip }},{{scaleio.mdm1_ip}},{{scaleio.mdm3_ip}}"
+  when: scaleio.mdm3_ip is defined
+
+- include: "install_scaleio_{{ ansible_distribution }}.yml"
+

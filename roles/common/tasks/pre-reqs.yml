@@ -1,0 +1,20 @@
+---
+
+- name: download hydsslg2 cert
+  get_url: url=http://trust.quovadisglobal.com/hydsslg2.crt dest=/etc/pki/ca-trust/source/anchors/hydsslg2.crt mode=0644 owner=root group=root
+
+- name: update-ca-trust
+  shell: update-ca-trust
+
+- name: Remove /etc/yum.repos.d
+  file: path="/etc/yum.repos.d" state=absent
+
+- name: Recreate /etc/yum.repos.d
+  file: path="/etc/yum.repos.d" state=directory
+
+- name: Add Repo Files to /etc/yum.repos.d
+  template: src=templates/{{ item }}.j2 dest=/etc/yum.repos.d/{{ item }}
+  with_items:
+     - docker.repo
+     - ccs-mirror.repo
+     - epel.repo

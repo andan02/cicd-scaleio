@@ -1,0 +1,7 @@
+---
+# tasks file for sdc
+- set_fact: role_name_scaleio=sdc
+- set_fact: node_is_manager=0
+  when: node_is_manager is not defined
+
+- include: ../../install_scaleio.yml

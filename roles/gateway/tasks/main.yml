@@ -1,0 +1,23 @@
+---
+- set_fact: role_name_scaleio=gateway
+
+- name: Install pre-requisite java
+  package: name="java-1.8.0-openjdk-devel" state="present"
+
+- include: ../../install_scaleio.yml
+
+- name: Add mdm ip's to gateway config
+  lineinfile: backup="yes" dest="{{ gateway_user_properties_file }}" line="mdm.ip.addresses={{ scaleio.mdm1_ip }},{{ scaleio.mdm2_ip }}" regexp="^mdm.ip.addresses=$" state="present"
+
+- name: Turn off certificate check
+  lineinfile: backup="yes" dest="{{ gateway_user_properties_file }}" line="security.bypass_certificate_check=true" regexp="^security\.bypass_certificate_check=.*" state="present"
+  notify: restart gateway
+
+#- name: Setup gateway admin password
+#  command: java -jar /opt/emc/scaleio/gateway/webapps/ROOT/resources/install-CLI.jar --reset_password "{{ scaleio.gateway_admin_password }}" --config_file {{ gateway_user_properties_file }}
+#  notify: restart gateway
+
+#- name: Rexray service restart
+#  service: name=rexray state=restarted
+#  when: env.name != "vagrant"
+#  ignore_errors: true

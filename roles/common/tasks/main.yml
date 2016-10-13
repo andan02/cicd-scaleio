@@ -1,0 +1,8 @@
+---
+
+- include: pre-reqs.yml
+
+- name: install required packages
+  package: name="{{ item }}" state=latest
+  with_items:
+    - "{{ scaleio.common_packages }}"

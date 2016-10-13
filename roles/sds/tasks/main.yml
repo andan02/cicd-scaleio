@@ -1,0 +1,31 @@
+- set_fact: role_name=sds
+
+- include: ../../install_scaleio.yml
+
+- name: find disks
+  disk_facts:
+  register: disks
+
+- name: use local disk variable
+  when: scaleio.sds_disks
+  set_fact: disks="{{ scaleio.sds_disks }}"
+
+- name: login to mdm
+  command: scli --login --mdm_ip {{ scaleio.mdm1_ip }},{{ scaleio.mdm2_ip }},{{ scaleio.mdm3_ip }} --username admin --password "{{ scaleio.password }}"
+  run_once: true
+  delegate_to: "{{ scaleio.mdm1_name }}"
+
+- name: add storage pool
+  command: scli --mdm_ip {{ scaleio.mdm1_ip }},{{ scaleio.mdm2_ip }},{{ scaleio.mdm3_ip }} --add_storage_pool --protection_domain_name {{ scaleio.protection_domain }} --storage_pool_name {{ scaleio.storage_pool }}
+  run_once: true
+  delegate_to: "{{ scaleio.mdm1_name }}"
+  ignore_errors: true
+
+#- debug: msg={{ hostvars[inventory_hostname]['ansible_bond0']['ipv4']['address'] }}
+
+- name: add sds
+  command: scli --add_sds --mdm_ip {{ scaleio.mdm1_ip }},{{ scaleio.mdm2_ip }},{{ scaleio.mdm3_ip }} --sds_ip {{ hostvars[inventory_hostname]['ansible_bond0']['ipv4']['address'] }} --storage_pool_name {{ scaleio.storage_pool }} --device_path {{ scaleio.sds_disks.ansible_available_disks|join(',') }} --sds_name "{{ inventory_hostname}}" --protection_domain_name {{ scaleio.protection_domain }}
+  register: add_sds
+  changed_when: "'already in use' not in add_sds.stderr"
+  delegate_to: "{{ scaleio.mdm1_name }}"
+  ignore_errors: true
